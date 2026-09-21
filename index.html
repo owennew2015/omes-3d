@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OME'S 3D | Interactive Menu</title>
-    <meta name="description" content="Experience the crisp, clean taste of OME'S. Zero sugar, zero compromise.">
+    <title>OME'S 3D | Good Mood Food Club</title>
+    <meta name="description" content="Bold bites. Cozy drinks. Interactive 3D Café experience by OME'S.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Inter:wght@400;500&family=Manrope:wght@400;700&family=Galada&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Outfit:wght@400;700;900&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;700&family=Galada&display=swap" rel="stylesheet">
     
     <!-- Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -17,40 +17,36 @@
 
     <style>
         :root {
-            --bg-color: #0a0a0a;
-            --text-color: #ffffff;
-            --accent-color: #ffffff;
-            --muted-color: rgba(255, 255, 255, 0.7);
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --bg-color: #1A0505;
+            --text-color: #FFF8E7;
+            --accent-color: #ED7B35;
+            --muted-color: rgba(255, 248, 231, 0.75);
+            --glass-bg: rgba(255, 255, 255, 0.07);
+            --glass-border: rgba(255, 255, 255, 0.15);
             --font-main: 'Inter', sans-serif;
-            --font-heading: 'Galada', cursive;
+            --font-heading: 'Fredoka', cursive;
+            --font-brand: 'Galada', cursive;
 
-            /* Dynamic Background Variables (Classic Theme) */
-            --bg-inner: #0b8a78;
-            --bg-mid: #044e3b;
-            --bg-outer: #011411;
+            /* Dynamic Background Variables (Ome's Latte Theme default) */
+            --bg-inner: #651313;
+            --bg-mid: #3E0C0C;
+            --bg-outer: #1A0505;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             background: radial-gradient(circle at center, var(--bg-inner) 0%, var(--bg-mid) 50%, var(--bg-outer) 100%);
             color: var(--text-color);
             font-family: var(--font-main);
-            overflow: hidden; /* Remove scroll */
+            overflow: hidden;
             height: 100vh;
             transition: background 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        body.blue-theme {
-            --bg-inner: #0b4f8a;
-            --bg-mid: #04294e;
-            --bg-outer: #010c14;
         }
 
         #bubbles-container {
@@ -74,8 +70,8 @@
                 transform: translateY(0) translateX(0) rotate(0deg);
                 opacity: 0;
             }
-            10% { opacity: 0.4; }
-            90% { opacity: 0.4; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
             100% {
                 transform: translateY(-110vh) translateX(30px) rotate(360deg);
                 opacity: 0;
@@ -86,7 +82,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2rem 4%;
+            padding: 1.8rem 4%;
             position: fixed;
             top: 0;
             width: 100%;
@@ -96,27 +92,30 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
             font-weight: 700;
-            font-size: 1.5rem;
-            font-family: var(--font-heading);
-            color: #fbcfe8;
+            font-size: 1.8rem;
+            font-family: var(--font-brand);
+            color: #FFF8E7;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+
+        .logo span {
+            color: #ED7B35;
         }
 
         .nav {
             display: flex;
             gap: 0.5rem;
-            background: var(--glass-bg);
             padding: 0.4rem;
             border-radius: 100px;
-            border: 1px solid var(--glass-border);
         }
 
         .nav.glass {
             position: relative;
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
         }
@@ -126,35 +125,36 @@
             color: var(--muted-color);
             text-decoration: none;
             font-size: 0.85rem;
-            font-weight: 500;
-            padding: 0.5rem 1.2rem;
+            font-weight: 700;
+            padding: 0.55rem 1.4rem;
             border-radius: 100px;
             transition: all 0.3s ease;
         }
 
         .nav-item:hover,
         .nav-item.active {
-            background: #fbcfe8;
-            color: #011d17;
+            background: #ED7B35;
+            color: #FFF8E7;
+            box-shadow: 0 4px 15px rgba(237, 123, 53, 0.4);
         }
 
         .contact-btn {
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 0.9rem 2rem;
+            background: rgba(237, 123, 53, 0.9);
+            color: #FFF8E7;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.8rem 1.8rem;
             border-radius: 100px;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: none;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         .contact-btn:hover {
-            background: rgba(0, 0, 0, 0.7);
+            background: #C8523B;
             transform: translateY(-2px);
-            box-shadow: none;
+            box-shadow: 0 8px 25px rgba(200, 82, 59, 0.5);
         }
 
         .hero {
@@ -163,7 +163,7 @@
             align-items: center;
             justify-content: center;
             padding: 0 4%;
-            padding-top: 5rem;
+            padding-top: 4rem;
         }
 
         .hero-content {
@@ -180,17 +180,19 @@
         .main-title,
         .side-title {
             font-family: var(--font-heading);
-            font-size: clamp(5rem, 10vw, 12rem);
-            line-height: 0.8;
-            font-weight: 400;
-            text-transform: none;
+            font-size: clamp(4.5rem, 8.5vw, 10.5rem);
+            line-height: 0.85;
+            font-weight: 700;
+            text-transform: uppercase;
             white-space: nowrap;
-            color: white;
-            letter-spacing: normal;
+            color: #FFF8E7;
+            letter-spacing: -2px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .outline {
-            color: var(--text-color);
+            color: transparent;
+            -webkit-text-stroke: 2px #FFF8E7;
         }
 
         .leaves-container {
@@ -206,11 +208,11 @@
 
         .leaf {
             position: absolute;
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             pointer-events: none;
             z-index: -1;
-            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.4));
         }
 
         .l1 { top: 10%; left: 15%; }
@@ -222,45 +224,62 @@
             display: flex;
             flex-direction: column;
             height: 100%;
-            padding: 6rem 0;
-            gap: 2rem;
+            padding: 5rem 0;
+            gap: 1.8rem;
             z-index: 100;
+        }
+
+        .tag-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: rgba(255, 248, 231, 0.12);
+            border: 1px solid rgba(255, 248, 231, 0.25);
+            border-radius: 99px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: #ED7B35;
+            text-transform: uppercase;
+            width: fit-content;
         }
 
         .description {
             color: var(--muted-color);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             line-height: 1.6;
-            max-width: 400px;
+            max-width: 420px;
         }
 
         .primary-btn {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 0.4rem 0.4rem 0.4rem 1.5rem;
+            gap: 1.2rem;
+            background: #C8523B;
+            color: #FFF8E7;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 0.4rem 0.4rem 1.6rem;
             border-radius: 100px;
             font-weight: 700;
+            font-size: 0.95rem;
             cursor: pointer;
             width: fit-content;
             transition: all 0.3s ease;
-            box-shadow: none;
+            box-shadow: 0 10px 25px rgba(200, 82, 59, 0.4);
         }
 
         .primary-btn:hover {
-            background: rgba(0, 0, 0, 0.7);
+            background: #ED7B35;
             transform: translateY(-3px);
-            box-shadow: none;
+            box-shadow: 0 14px 30px rgba(237, 123, 53, 0.5);
         }
 
         .plus-icon {
-            background: #fbcfe8;
-            color: #011d17;
-            width: 38px;
-            height: 38px;
+            background: #FFF8E7;
+            color: #651313;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -268,8 +287,6 @@
             font-size: 1.4rem;
             font-weight: 900;
             line-height: 1;
-            padding-bottom: 2px;
-            border: none;
         }
 
         .award-badge {
@@ -284,15 +301,16 @@
             height: 48px;
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 12px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #ED7B35;
         }
 
         .award-text { display: flex; flex-direction: column; }
-        .award-title { font-size: 0.7rem; letter-spacing: 0.1em; color: var(--muted-color); }
-        .award-subtitle { font-size: 0.85rem; font-weight: 600; }
+        .award-title { font-size: 0.7rem; letter-spacing: 0.12em; color: var(--muted-color); font-weight: 700; }
+        .award-subtitle { font-size: 0.85rem; font-weight: 700; color: #FFF8E7; }
 
         .hero-center {
             display: flex;
@@ -307,7 +325,7 @@
             opacity: 0;
             animation: fadeIn 1.5s ease-out 0.3s forwards, float 6s ease-in-out infinite;
             pointer-events: none;
-            background: radial-gradient(circle at center, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle at center, rgba(237, 123, 53, 0.15) 0%, transparent 70%);
         }
 
         @keyframes fadeIn { to { opacity: 1; } }
@@ -361,7 +379,7 @@
             height: 120px;
             outline: none;
             --progress-bar-color: transparent;
-            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
             transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
@@ -382,7 +400,7 @@
             align-items: flex-end;
             text-align: right;
             height: 100%;
-            padding: 6rem 0;
+            padding: 5rem 0;
             z-index: 100;
             width: 450px;
             pointer-events: none;
@@ -391,94 +409,82 @@
         .product-carousel {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.2rem;
             align-items: flex-end;
             pointer-events: auto;
         }
 
-        .carousel-cards { display: flex; gap: 1rem; }
+        .carousel-cards { display: flex; gap: 0.9rem; }
 
         .card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
             padding: 1rem;
-            padding-top: 5rem;
-            border-radius: 28px;
+            padding-top: 4.8rem;
+            border-radius: 24px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1.2rem;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            width: 135px;
+            width: 130px;
             position: relative;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             text-align: center;
         }
 
         .card:hover {
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.15);
             border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-5px);
         }
 
         .card.active {
-            border-color: #fbcfe8;
-            border-width: 1px;
-            background: var(--glass-bg);
-            box-shadow: none;
+            border-color: #ED7B35;
+            border-width: 2px;
+            background: rgba(237, 123, 53, 0.15);
+            box-shadow: 0 10px 30px rgba(237, 123, 53, 0.3);
         }
 
-        .card img {
-            width: 140px;
-            height: auto;
-            margin-top: -8rem;
-            filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.5));
-            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-            display: block;
-            will-change: transform;
-            pointer-events: none;
+        .card-preview-thumb {
+            width: 80px;
+            height: 80px;
+            margin-top: -4.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ED7B35, #C8523B);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFF8E7;
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .card:hover img {
-            transform: translateY(-30px) rotate(-12deg) scale(1.15) !important;
+        .card:hover .card-preview-thumb {
+            transform: translateY(-10px) scale(1.15) rotate(-8deg);
         }
 
         .card-info {
             display: flex;
             flex-direction: column;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             width: 100%;
-            word-wrap: break-word;
         }
 
-        .card-info span:first-child { font-weight: 600; }
-        .card-info span:last-child { color: var(--muted-color); }
-
-        .carousel-nav { display: flex; gap: 1rem; }
-
-        .nav-arrow {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s;
-        }
-
-        .nav-arrow:hover { background: rgba(255, 255, 255, 0.1); }
+        .card-info span:first-child { font-weight: 700; color: #FFF8E7; }
+        .card-info span:last-child { color: #ED7B35; font-weight: 700; margin-top: 2px; }
 
         .side-title { align-self: flex-end; text-align: right; }
 
         @media (max-width: 1200px) {
             .main-product-3d { width: 100vw; height: 60vh; top: 40%; }
-            .hero-content { grid-template-columns: 1fr; padding-top: 8rem; }
+            .hero-content { grid-template-columns: 1fr; padding-top: 6rem; }
             .hero-center { order: -1; }
-            .main-title, .side-title { font-size: 5rem; }
+            .main-title, .side-title { font-size: 4.5rem; }
             .hero-right { align-items: center; text-align: center; width: 100%; }
             .side-title { align-self: center; text-align: center; }
         }
@@ -492,15 +498,15 @@
     <!-- 2. Header -->
     <header class="header">
         <div class="logo">
-            <span>OME'S</span>
+            OME'S<span>.</span>
         </div>
         <nav class="nav glass">
             <a href="#" class="nav-item active">Home</a>
             <a href="#" class="nav-item">Menu</a>
             <a href="#" class="nav-item">Promo</a>
-            <a href="#" class="nav-item">Lacak</a>
+            <a href="#" class="nav-item">Lacak Order</a>
         </nav>
-        <button class="contact-btn">Order Now</button>
+        <button class="contact-btn" onclick="alert('Order OME\'S 3D!')">Pesan Sekarang</button>
     </header>
 
     <!-- 3. Main Hero -->
@@ -517,31 +523,31 @@
 
             <!-- 3b. Left Column -->
             <div class="hero-left">
-                <h1 class="main-title large-animation-1">
+                <div class="tag-chip">✨ GOOD MOOD FOOD CLUB</div>
+                <h1 id="hero-title" class="main-title">
                     <span class="outline">Ome's</span><br>
-                    Classic
+                    Latte
                 </h1>
-                <p class="description">
-                    Unleash the crisp taste of Ome's signature blend. <br>
-                    Refreshment redefined in every drop — <br>
-                    zero sugar, zero compromise.
+                <p id="hero-desc" class="description">
+                    Espresso creamy bercita rasa bold dengan gula aren pilihan dan susu lembut.<br>
+                    Kesegaran sempurna untuk harimu.
                 </p>
                 <div class="cta-group">
-                    <button class="primary-btn">
-                        Checkout
+                    <button class="primary-btn" onclick="alert('Pesanan OME\'S Latte ditambahkan!')">
+                        Beli Sekarang
                         <span class="plus-icon">+</span>
                     </button>
                 </div>
                 <div class="award-badge">
                     <div class="award-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 15L15 18L19 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 15L15 18L19 14" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M7 10L12 15L17 10" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </div>
                     <div class="award-text">
-                        <span class="award-title">CAFE AWARDS</span>
-                        <span class="award-subtitle">PREMIUM MENU 2026</span>
+                        <span class="award-title">OME'S EXCELLENCE</span>
+                        <span class="award-subtitle">BEST SELLER #1 2026</span>
                     </div>
                 </div>
             </div>
@@ -555,7 +561,7 @@
 
             <!-- 3d. Center Product -->
             <div class="hero-center">
-                <model-viewer id="product-model" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/deit_soda2.glb" alt="Ome's 3D Model" camera-controls
+                <model-viewer id="product-model" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/deit_soda2.glb" alt="Ome's 3D Product" camera-controls
                     disable-zoom shadow-intensity="0" environment-image="neutral" exposure="1.5"
                     interaction-prompt="none" camera-orbit="0deg 90deg 380%" field-of-view="30deg"
                     class="main-product-3d">
@@ -572,50 +578,41 @@
                 <model-viewer class="berry b6" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/cherry.glb" environment-image="neutral" exposure="1.2" interaction-prompt="none" camera-orbit="80deg 75deg 105%"></model-viewer>
             </div>
 
-            <!-- 3f. Right Column -->
+            <!-- 3f. Right Column Carousel -->
             <div class="hero-right">
                 <div class="product-carousel">
                     <div class="carousel-cards">
-                        <div class="card active" data-flavor="classic">
-                            <img src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/Green%20Soda.png" alt="Ome's Classic">
+                        <div class="card active" data-flavor="latte">
+                            <div class="card-preview-thumb">☕</div>
                             <div class="card-info">
-                                <span>Ome's Classic</span>
+                                <span>Ome's Latte</span>
                                 <span>Rp 28.000</span>
                             </div>
                         </div>
-                        <div class="card" data-flavor="blue">
-                            <img src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/Blue%20Soda.png" alt="Ome's Zero Lime" style="filter: brightness(0.7);">
+                        <div class="card" data-flavor="matcha">
+                            <div class="card-preview-thumb" style="background: linear-gradient(135deg, #4B805A, #2D5036);">🍵</div>
                             <div class="card-info">
-                                <span>Ome's Zero Lime</span>
-                                <span>Rp 28.000</span>
+                                <span>Dirty Matcha</span>
+                                <span>Rp 33.000</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="carousel-nav">
-                        <button class="nav-arrow">←</button>
-                        <button class="nav-arrow">→</button>
+                        <div class="card" data-flavor="caramel">
+                            <div class="card-preview-thumb" style="background: linear-gradient(135deg, #ED7B35, #8A481B);">🍮</div>
+                            <div class="card-info">
+                                <span>Caramel Cloud</span>
+                                <span>Rp 32.000</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <h2 class="side-title large-animation-1">
-                    <span class="outline">Refreshingly</span><br>
-                    Clean
+                <h2 id="side-title" class="side-title">
+                    <span class="outline">Bold</span><br>
+                    Bites
                 </h2>
             </div>
 
         </div>
     </main>
-
-    <!-- Hidden Preloads & Filters -->
-    <svg style="position: absolute; width: 0; height: 0; opacity: 0; pointer-events: none;">
-        <filter id="frosted">
-            <feTurbulence type="fractalNoise" baseFrequency="0.0125" numOctaves="3" result="noise" />
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="80" xChannelSelector="R" yChannelSelector="G" />
-        </filter>
-    </svg>
-    <div style="display: none;">
-        <model-viewer src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/blueberry.glb"></model-viewer>
-        <model-viewer src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/cherry.glb"></model-viewer>
-    </div>
 
     <!-- Script Logic -->
     <script>
@@ -625,91 +622,180 @@
         const leavesBG = document.querySelector('.leaves-container');
         const allBerries = document.querySelectorAll('.berry');
         const cards = document.querySelectorAll('.card');
+        
         let isSwitching = false;
         let switchSpin = 0;
-        let blueTexture = null;
-        let greenTexture = null;
+        const textures = {};
 
+        // Helper: Generate Custom OME'S Canvas Textures
+        function createOmesCanvasTexture(title, subtitle, mainColor, accentColor) {
+            const canvas = document.createElement('canvas');
+            canvas.width = 1024;
+            canvas.height = 1024;
+            const ctx = canvas.getContext('2d');
+
+            // Background Gradient
+            const grad = ctx.createLinearGradient(0, 0, 1024, 1024);
+            grad.addColorStop(0, mainColor);
+            grad.addColorStop(0.5, accentColor);
+            grad.addColorStop(1, '#1A0505');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, 1024, 1024);
+
+            // Metallic stripe patterns
+            ctx.fillStyle = 'rgba(255, 248, 231, 0.15)';
+            ctx.fillRect(100, 0, 180, 1024);
+            ctx.fillRect(740, 0, 180, 1024);
+
+            // Brand Header
+            ctx.fillStyle = '#FFF8E7';
+            ctx.font = 'bold 90px Fredoka, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText("OME'S", 512, 280);
+
+            // Subtitle Chip
+            ctx.fillStyle = 'rgba(0,0,0,0.4)';
+            ctx.roundRect(262, 320, 500, 80, 40);
+            ctx.fill();
+
+            ctx.fillStyle = '#ED7B35';
+            ctx.font = 'bold 36px Inter, sans-serif';
+            ctx.fillText("GOOD MOOD FOOD CLUB", 512, 372);
+
+            // Flavor Big Title
+            ctx.fillStyle = '#FFF8E7';
+            ctx.font = '900 110px Fredoka, sans-serif';
+            ctx.fillText(title.toUpperCase(), 512, 560);
+
+            // Subtitle Details
+            ctx.fillStyle = 'rgba(255, 248, 231, 0.8)';
+            ctx.font = 'bold 34px Inter, sans-serif';
+            ctx.fillText(subtitle, 512, 640);
+
+            // Bottom Badge
+            ctx.strokeStyle = '#FFF8E7';
+            ctx.lineWidth = 6;
+            ctx.beginPath();
+            ctx.arc(512, 780, 70, 0, Math.PI * 2);
+            ctx.stroke();
+
+            ctx.fillStyle = '#FFF8E7';
+            ctx.font = 'bold 32px Fredoka, sans-serif';
+            ctx.fillText("2026", 512, 792);
+
+            return canvas.toDataURL('image/png');
+        }
+
+        // Preload custom OME'S textures into ModelViewer
         modelViewer.addEventListener('load', async () => {
             try {
-                blueTexture = await modelViewer.createTexture('https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/blue%20base%20color.jpg');
-                greenTexture = await modelViewer.createTexture('https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/green%20base%20color.jpg');
+                const latteTexData = createOmesCanvasTexture('LATTE', 'ESPRESSO & AREN', '#651313', '#C8523B');
+                const matchaTexData = createOmesCanvasTexture('MATCHA', 'EARTHY & BOLD', '#2D5036', '#4B805A');
+                const caramelTexData = createOmesCanvasTexture('CARAMEL', 'COLD BREW FOAM', '#8A481B', '#ED7B35');
 
-                if (modelViewer.model) {
+                textures.latte = await modelViewer.createTexture(latteTexData);
+                textures.matcha = await modelViewer.createTexture(matchaTexData);
+                textures.caramel = await modelViewer.createTexture(caramelTexData);
+
+                // Set initial texture
+                if (modelViewer.model && textures.latte) {
                     const material = modelViewer.model.materials[0];
                     if (material && material.pbrMetallicRoughness.baseColorTexture) {
-                        material.pbrMetallicRoughness.baseColorTexture.setTexture(blueTexture);
-                        await new Promise(r => requestAnimationFrame(r));
-                        material.pbrMetallicRoughness.baseColorTexture.setTexture(greenTexture);
+                        material.pbrMetallicRoughness.baseColorTexture.setTexture(textures.latte);
                     }
                 }
-            } catch (e) { console.error("Texture preload failed", e); }
+            } catch (e) {
+                console.error("Texture creation failed", e);
+            }
         });
 
+        // Menu Data
+        const menuFlavors = {
+            latte: {
+                title: "<span class=\"outline\">Ome's</span><br>Latte",
+                sideTitle: "<span class=\"outline\">Bold</span><br>Bites",
+                desc: "Espresso creamy bercita rasa bold dengan gula aren pilihan dan susu lembut.<br>Kesegaran sempurna untuk harimu.",
+                colors: { inner: '#651313', mid: '#3E0C0C', outer: '#1A0505' },
+                texture: 'latte',
+                berrySrc: 'https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/cherry.glb'
+            },
+            matcha: {
+                title: "<span class=\"outline\">Dirty</span><br>Matcha",
+                sideTitle: "<span class=\"outline\">Earthy</span><br>Vibe",
+                desc: "Matcha kualitas premium Jepang bertemu dengan shot espresso bold.<br>Keseimbangan pahit & gurih yang memanjakan.",
+                colors: { inner: '#2D5036', mid: '#1A3321', outer: '#0A190F' },
+                texture: 'matcha',
+                berrySrc: 'https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/blueberry.glb'
+            },
+            caramel: {
+                title: "<span class=\"outline\">Caramel</span><br>Cloud",
+                sideTitle: "<span class=\"outline\">Cozy</span><br>Drink",
+                desc: "Cold brew racikan spesial dengan caramel butter dan foam lembut bertumpuk.<br>Manis pas & aromatik.",
+                colors: { inner: '#8A481B', mid: '#4E280E', outer: '#1E0F05' },
+                texture: 'caramel',
+                berrySrc: 'https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/cherry.glb'
+            }
+        };
+
+        // Carousel Click Listeners
         cards.forEach(card => {
             card.addEventListener('click', () => {
                 if (isSwitching) return;
                 cards.forEach(c => c.classList.remove('active'));
                 card.classList.add('active');
-                const flavor = card.dataset.flavor;
-                switchFlavor(flavor);
+                const flavorKey = card.dataset.flavor;
+                switchFlavor(flavorKey);
             });
         });
 
-        async function switchFlavor(flavor) {
-            if (isSwitching) return;
+        async function switchFlavor(flavorKey) {
+            if (isSwitching || !menuFlavors[flavorKey]) return;
             isSwitching = true;
+            
+            const flavor = menuFlavors[flavorKey];
             const body = document.body;
             const berries = document.querySelectorAll('.berry');
             const heroCenter = document.querySelector('.hero-center');
 
-            const targetColors = flavor === 'blue' ?
-                { inner: '#0b4f8a', mid: '#04294e', outer: '#010c14' } :
-                { inner: '#0b8a78', mid: '#044e3b', outer: '#011411' };
-
+            // 1. Background Gradient Morph
             gsap.to(body, {
-                '--bg-inner': targetColors.inner,
-                '--bg-mid': targetColors.mid,
-                '--bg-outer': targetColors.outer,
-                duration: 1.5,
+                '--bg-inner': flavor.colors.inner,
+                '--bg-mid': flavor.colors.mid,
+                '--bg-outer': flavor.colors.outer,
+                duration: 1.4,
                 ease: 'power2.inOut'
             });
 
+            // 2. Text update
+            document.getElementById('hero-title').innerHTML = flavor.title;
+            document.getElementById('hero-desc').innerHTML = flavor.desc;
+            document.getElementById('side-title').innerHTML = flavor.sideTitle;
+
+            // 3. 720 Deg Can Spin + Texture Swap at Peak
             const spinObj = { val: 0, blur: 0 };
             gsap.to(spinObj, {
                 val: 360,
                 blur: 15,
-                duration: 0.6,
+                duration: 0.55,
                 ease: "power2.in",
                 onUpdate: () => {
                     switchSpin = spinObj.val;
                     modelViewer.style.filter = `blur(${spinObj.blur}px)`;
                 },
                 onComplete: async () => {
-                    if (flavor === 'blue') {
-                        body.classList.add('blue-theme');
-                        if (modelViewer.model && blueTexture) {
-                            modelViewer.model.materials.forEach(material => {
-                                if (material.pbrMetallicRoughness.baseColorTexture) {
-                                    material.pbrMetallicRoughness.baseColorTexture.setTexture(blueTexture);
-                                }
-                            });
-                        }
-                    } else {
-                        body.classList.remove('blue-theme');
-                        if (modelViewer.model && greenTexture) {
-                            modelViewer.model.materials.forEach(material => {
-                                if (material.pbrMetallicRoughness.baseColorTexture) {
-                                    material.pbrMetallicRoughness.baseColorTexture.setTexture(greenTexture);
-                                }
-                            });
-                        }
+                    // SWAP TEXTURE AT PEAK
+                    if (modelViewer.model && textures[flavor.texture]) {
+                        modelViewer.model.materials.forEach(material => {
+                            if (material.pbrMetallicRoughness.baseColorTexture) {
+                                material.pbrMetallicRoughness.baseColorTexture.setTexture(textures[flavor.texture]);
+                            }
+                        });
                     }
 
                     gsap.to(spinObj, {
                         val: 720,
                         blur: 0,
-                        duration: 1.5,
+                        duration: 1.4,
                         ease: "back.out(0.7)",
                         onUpdate: () => {
                             switchSpin = spinObj.val;
@@ -723,6 +809,7 @@
                 }
             });
 
+            // 4. Implode & Explode Particle Animation
             let completedBerries = 0;
             berries.forEach((berry, i) => {
                 const bW = berry.offsetWidth / 2;
@@ -734,14 +821,10 @@
                 const currentBaseX = parseFloat(berry.dataset.baseX) || 0;
                 const currentBaseY = parseFloat(berry.dataset.baseY) || 0;
 
-                const nextBaseX = (Math.random() - 0.5) * 200;
-                const nextBaseY = (Math.random() - 0.5) * 200;
+                const nextBaseX = (Math.random() - 0.5) * 220;
+                const nextBaseY = (Math.random() - 0.5) * 220;
 
-                gsap.set(berry, {
-                    rotation: startAngle,
-                    x: currentBaseX,
-                    y: currentBaseY
-                });
+                gsap.set(berry, { rotation: startAngle, x: currentBaseX, y: currentBaseY });
 
                 const berryTl = gsap.timeline();
 
@@ -751,28 +834,22 @@
                     rotation: startAngle + 45,
                     scale: 0.1,
                     opacity: 0,
-                    duration: 0.5,
+                    duration: 0.45,
                     ease: "power2.in",
                     onComplete: () => {
-                        berry.src = flavor === 'blue' 
-                            ? 'https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/blueberry.glb' 
-                            : 'https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/cherry.glb';
+                        berry.src = flavor.berrySrc;
                         heroCenter.style.zIndex = 50;
                     }
                 })
+                .to(berry, { duration: 0.25 })
                 .to(berry, {
-                    duration: 0.3
-                })
-                .to(berry, {
-                    onStart: () => {
-                        heroCenter.style.zIndex = 1;
-                    },
+                    onStart: () => { heroCenter.style.zIndex = 1; },
                     x: nextBaseX,
                     y: nextBaseY,
                     rotation: startAngle + 90,
                     scale: 1,
                     opacity: 1,
-                    duration: 0.9,
+                    duration: 0.85,
                     ease: "back.out(1.5)",
                     onComplete: () => {
                         berry.dataset.angle = startAngle + 90;
@@ -790,6 +867,7 @@
             });
         }
 
+        // Pointer Tracking & Force-Field Repulsion Loop
         allBerries.forEach(b => {
             b.dataset.rx = 0; b.dataset.ry = 0; b.dataset.angle = Math.random() * 360;
             b.dataset.baseX = 0; b.dataset.baseY = 0;
@@ -873,13 +951,14 @@
 
         animate();
 
+        // Rising Steam / Bubble Particles
         const bubblesContainer = document.getElementById('bubbles-container');
         function createBubble() {
             if (!bubblesContainer) return;
             const bubble = document.createElement('img');
             bubble.src = 'https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/bubble.png';
             bubble.className = 'bubble-img';
-            const size = Math.random() * 20 + 10 + 'px';
+            const size = Math.random() * 22 + 10 + 'px';
             bubble.style.width = size;
             bubble.style.height = 'auto';
             bubble.style.left = Math.random() * 100 + '%';
@@ -892,7 +971,7 @@
             bubblesContainer.appendChild(bubble);
             setTimeout(() => bubble.remove(), duration * 1000);
         }
-        setInterval(createBubble, 400);
+        setInterval(createBubble, 380);
 
     </script>
 </body>
