@@ -480,6 +480,202 @@
 
         .side-title { align-self: flex-end; text-align: right; }
 
+        .cart-float {
+            position: fixed;
+            right: 4%;
+            bottom: 2rem;
+            z-index: 180;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.25);
+            background: rgba(200,82,59,0.9);
+            color: #FFF8E7;
+            display: grid;
+            place-items: center;
+            font-size: 1.4rem;
+            cursor: pointer;
+            box-shadow: 0 14px 35px rgba(0,0,0,0.35);
+            backdrop-filter: blur(18px);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            min-width: 22px;
+            height: 22px;
+            border-radius: 99px;
+            background: #ED7B35;
+            color: #FFF8E7;
+            font-size: 0.72rem;
+            font-weight: 800;
+            display: grid;
+            place-items: center;
+            border: 2px solid #651313;
+        }
+
+        .overlay-panel {
+            position: fixed;
+            inset: 0;
+            z-index: 220;
+            background: rgba(10, 4, 4, 0.62);
+            backdrop-filter: blur(18px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.2rem;
+        }
+
+        .overlay-panel.show { display: flex; }
+
+        .modal-card {
+            width: min(520px, 94vw);
+            max-height: 88vh;
+            overflow: auto;
+            background: rgba(255,255,255,0.09);
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 32px;
+            color: #FFF8E7;
+            box-shadow: 0 28px 90px rgba(0,0,0,0.45), inset 0 0 0 1px rgba(255,255,255,0.08);
+            backdrop-filter: blur(24px);
+            padding: 1.4rem;
+        }
+
+        .modal-head {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-title {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            line-height: 0.95;
+            letter-spacing: -1px;
+        }
+
+        .close-modal {
+            width: 42px;
+            height: 42px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.18);
+            background: rgba(255,255,255,0.1);
+            color: #FFF8E7;
+            cursor: pointer;
+            font-size: 1.4rem;
+        }
+
+        .cart-list, .promo-list, .track-steps { display: grid; gap: 0.75rem; }
+
+        .cart-item, .promo-item, .track-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.16);
+            border-radius: 22px;
+            padding: 0.9rem;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 52px 1fr auto;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .mini-thumb {
+            width: 52px;
+            height: 52px;
+            border-radius: 18px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, #ED7B35, #C8523B);
+            font-size: 1.4rem;
+        }
+
+        .cart-name { font-weight: 800; }
+        .cart-price { color: #ED7B35; font-size: 0.9rem; font-weight: 800; }
+        .qty-row { display: flex; align-items: center; gap: 0.45rem; }
+        .qty-btn, .remove-btn {
+            border: none;
+            background: rgba(255,255,255,0.14);
+            color: #FFF8E7;
+            min-width: 30px;
+            height: 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 800;
+        }
+
+        .remove-btn { color: #ffc4b5; }
+
+        .modal-footer {
+            margin-top: 1rem;
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .total-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.15rem;
+            font-weight: 900;
+            padding: 0.9rem 0;
+            border-top: 1px solid rgba(255,255,255,0.14);
+        }
+
+        .action-btn {
+            width: 100%;
+            border: none;
+            border-radius: 99px;
+            background: #C8523B;
+            color: #FFF8E7;
+            padding: 0.95rem 1.2rem;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 0 12px 30px rgba(200,82,59,0.35);
+        }
+
+        .action-btn.secondary { background: rgba(255,255,255,0.12); box-shadow: none; }
+
+        .field-grid { display: grid; gap: 0.75rem; }
+        .field-grid input, .field-grid textarea, .field-grid select {
+            width: 100%;
+            border: 1px solid rgba(255,255,255,0.16);
+            background: rgba(255,255,255,0.1);
+            color: #FFF8E7;
+            border-radius: 18px;
+            padding: 0.9rem 1rem;
+            outline: none;
+            font: inherit;
+        }
+
+        .field-grid option { color: #1A0505; }
+        .hint-text { color: var(--muted-color); font-size: 0.9rem; line-height: 1.5; }
+        .ok-text { color: #9BE7B0; font-weight: 800; }
+        .err-text { color: #ffc4b5; font-weight: 800; }
+
+        .step-row {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .step-dot {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: rgba(255,255,255,0.14);
+            font-size: 0.8rem;
+        }
+
+        .step-row.active .step-dot, .step-row.done .step-dot { background: #ED7B35; }
+        .empty-cart { text-align: center; padding: 2rem 1rem; color: var(--muted-color); }
+
         @media (max-width: 1200px) {
             .main-product-3d { width: 100vw; height: 60vh; top: 40%; }
             .hero-content { grid-template-columns: 1fr; padding-top: 6rem; }
@@ -501,12 +697,12 @@
             OME'S<span>.</span>
         </div>
         <nav class="nav glass">
-            <a href="#" class="nav-item active">Home</a>
-            <a href="#" class="nav-item">Menu</a>
-            <a href="#" class="nav-item">Promo</a>
-            <a href="#" class="nav-item">Lacak Order</a>
+            <a href="#" class="nav-item active" data-action="home">Home</a>
+            <a href="#" class="nav-item" data-action="menu">Menu</a>
+            <a href="#" class="nav-item" data-action="promo">Promo</a>
+            <a href="#" class="nav-item" data-action="track">Lacak Order</a>
         </nav>
-        <button class="contact-btn" onclick="alert('Order OME\'S 3D!')">Pesan Sekarang</button>
+        <button class="contact-btn" data-action="add-cart">Pesan Sekarang</button>
     </header>
 
     <!-- 3. Main Hero -->
@@ -533,7 +729,7 @@
                     Kesegaran sempurna untuk harimu.
                 </p>
                 <div class="cta-group">
-                    <button class="primary-btn" onclick="alert('Pesanan OME\'S Latte ditambahkan!')">
+                    <button class="primary-btn" data-action="add-cart">
                         Beli Sekarang
                         <span class="plus-icon">+</span>
                     </button>
@@ -613,6 +809,110 @@
 
         </div>
     </main>
+
+    <!-- Modals & Overlays -->
+    <div class="cart-float" data-action="menu">
+        🛒<span class="cart-count" id="cart-badge">0</span>
+    </div>
+
+    <!-- Modal Cart -->
+    <div id="modal-cart" class="overlay-panel">
+        <div class="modal-card">
+            <div class="modal-head">
+                <h3 class="modal-title">Keranjang<br>Kamu</h3>
+                <button class="close-modal" data-close>✕</button>
+            </div>
+            <div id="cart-items" class="cart-list"></div>
+            <div class="modal-footer">
+                <div class="total-line">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">Rp 0</span>
+                </div>
+                <button class="action-btn" data-action="checkout">Lanjut Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Checkout -->
+    <div id="modal-checkout" class="overlay-panel">
+        <div class="modal-card">
+            <div class="modal-head">
+                <h3 class="modal-title">Almost<br>There!</h3>
+                <button class="close-modal" data-close>✕</button>
+            </div>
+            <form id="checkout-form" class="field-grid">
+                <input required id="ch-name" placeholder="Nama Pemesan">
+                <input required id="ch-phone" type="tel" placeholder="Nomor WhatsApp">
+                <select id="ch-type">
+                    <option>Dine In</option>
+                    <option>Take Away</option>
+                </select>
+                <textarea id="ch-note" placeholder="Catatan (opsional)"></textarea>
+                
+                <div style="display:flex; gap:0.5rem">
+                    <input id="ch-promo" placeholder="Kode Promo (cth: WELCOME10)" style="text-transform:uppercase">
+                    <button type="button" class="action-btn secondary" style="width:auto" id="btn-promo-check">Cek</button>
+                </div>
+                <div id="promo-msg"></div>
+
+                <div class="modal-footer">
+                    <div class="total-line" style="border:none; padding-bottom:0">
+                        <span style="font-size:1rem; font-weight:600">Subtotal</span>
+                        <span id="ch-subtotal" style="font-size:1rem; font-weight:600">Rp 0</span>
+                    </div>
+                    <div class="total-line" id="ch-disc-row" style="border:none; padding:0; display:none;">
+                        <span style="font-size:1rem; font-weight:600; color:#9BE7B0">Diskon</span>
+                        <span id="ch-disc" style="font-size:1rem; font-weight:600; color:#9BE7B0">-Rp 0</span>
+                    </div>
+                    <div class="total-line">
+                        <span>Total Bayar</span>
+                        <span id="ch-total">Rp 0</span>
+                    </div>
+                    <button type="submit" class="action-btn">Buat Pesanan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Promo -->
+    <div id="modal-promo" class="overlay-panel">
+        <div class="modal-card">
+            <div class="modal-head">
+                <h3 class="modal-title">Promo<br>Hari Ini</h3>
+                <button class="close-modal" data-close>✕</button>
+            </div>
+            <div class="promo-list">
+                <div class="promo-item" onclick="applyPromoText('WELCOME10')">
+                    <div style="font-weight:900; color:#ED7B35; font-size:1.2rem">WELCOME10</div>
+                    <div style="font-size:0.9rem">Diskon 10% (Max 50k). Min order 50k.</div>
+                </div>
+                <div class="promo-item" onclick="applyPromoText('SEHAT5K')">
+                    <div style="font-weight:900; color:#ED7B35; font-size:1.2rem">SEHAT5K</div>
+                    <div style="font-size:0.9rem">Potongan 5k. Min order 30k.</div>
+                </div>
+                <div class="promo-item" onclick="applyPromoText('PAYDAY20')">
+                    <div style="font-weight:900; color:#ED7B35; font-size:1.2rem">PAYDAY20</div>
+                    <div style="font-size:0.9rem">Diskon 20% (Max 100k). Min order 100k.</div>
+                </div>
+            </div>
+            <p class="hint-text" style="margin-top:1rem; text-align:center;">Klik untuk gunakan kode.</p>
+        </div>
+    </div>
+
+    <!-- Modal Track -->
+    <div id="modal-track" class="overlay-panel">
+        <div class="modal-card">
+            <div class="modal-head">
+                <h3 class="modal-title">Lacak<br>Pesanan</h3>
+                <button class="close-modal" data-close>✕</button>
+            </div>
+            <div style="display:flex; gap:0.5rem; margin-bottom:1.5rem">
+                <input id="track-id" placeholder="OME-0001" style="width:100%; border-radius:18px; border:1px solid rgba(255,255,255,0.16); background:rgba(255,255,255,0.1); color:#FFF; padding:0.9rem 1rem; outline:none; text-transform:uppercase">
+                <button class="action-btn secondary" style="width:auto" onclick="trackOrderSubmit()">Cari</button>
+            </div>
+            <div id="track-result"></div>
+        </div>
+    </div>
 
     <!-- Script Logic -->
     <script>
@@ -712,6 +1012,10 @@
         // Menu Data
         const menuFlavors = {
             latte: {
+                id: 'M001',
+                name: "Ome's Latte",
+                price: 28000,
+                thumb: '☕',
                 title: "<span class=\"outline\">Ome's</span><br>Latte",
                 sideTitle: "<span class=\"outline\">Bold</span><br>Bites",
                 desc: "Espresso creamy bercita rasa bold dengan gula aren pilihan dan susu lembut.<br>Kesegaran sempurna untuk harimu.",
@@ -720,6 +1024,10 @@
                 berrySrc: 'https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/cherry.glb'
             },
             matcha: {
+                id: 'M003',
+                name: "Dirty Matcha",
+                price: 33000,
+                thumb: '🍵',
                 title: "<span class=\"outline\">Dirty</span><br>Matcha",
                 sideTitle: "<span class=\"outline\">Earthy</span><br>Vibe",
                 desc: "Matcha kualitas premium Jepang bertemu dengan shot espresso bold.<br>Keseimbangan pahit & gurih yang memanjakan.",
@@ -728,6 +1036,10 @@
                 berrySrc: 'https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/blueberry.glb'
             },
             caramel: {
+                id: 'M002',
+                name: "Caramel Cloud",
+                price: 32000,
+                thumb: '🍮',
                 title: "<span class=\"outline\">Caramel</span><br>Cloud",
                 sideTitle: "<span class=\"outline\">Cozy</span><br>Drink",
                 desc: "Cold brew racikan spesial dengan caramel butter dan foam lembut bertumpuk.<br>Manis pas & aromatik.",
@@ -750,6 +1062,7 @@
 
         async function switchFlavor(flavorKey) {
             if (isSwitching || !menuFlavors[flavorKey]) return;
+            currentActiveFlavorKey = flavorKey;
             isSwitching = true;
             
             const flavor = menuFlavors[flavorKey];
@@ -971,7 +1284,265 @@
             bubblesContainer.appendChild(bubble);
             setTimeout(() => bubble.remove(), duration * 1000);
         }
-        setInterval(createBubble, 380);
+            setInterval(createBubble, 380);
+
+        // --- Application State & Functional Features ---
+        let currentActiveFlavorKey = 'latte';
+        let cart = [];
+        let appliedPromo = null;
+
+        const rupiah = (val) => 'Rp ' + Number(val || 0).toLocaleString('id-ID');
+
+        function openModal(id) {
+            closeAllModals();
+            const el = document.getElementById(id);
+            if (el) el.classList.add('show');
+        }
+
+        function closeAllModals() {
+            document.querySelectorAll('.overlay-panel').forEach(p => p.classList.remove('show'));
+        }
+
+        document.querySelectorAll('[data-close]').forEach(btn => {
+            btn.addEventListener('click', closeAllModals);
+        });
+
+        document.querySelectorAll('.overlay-panel').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeAllModals();
+            });
+        });
+
+        // Add to Cart
+        function addToCart(flavorKey) {
+            const item = menuFlavors[flavorKey || currentActiveFlavorKey];
+            if (!item) return;
+
+            const existing = cart.find(c => c.id === item.id);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ id: item.id, name: item.name, price: item.price, thumb: item.thumb, qty: 1 });
+            }
+
+            renderCart();
+            openModal('modal-cart');
+        }
+
+        function updateQty(id, change) {
+            const idx = cart.findIndex(c => c.id === id);
+            if (idx === -1) return;
+            cart[idx].qty += change;
+            if (cart[idx].qty <= 0) cart.splice(idx, 1);
+            renderCart();
+        }
+
+        function getSubtotal() {
+            return cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+        }
+
+        function getDiscount(subtotal) {
+            if (!appliedPromo) return 0;
+            if (subtotal < appliedPromo.minOrder) return 0;
+            if (appliedPromo.type === 'fixed') return appliedPromo.val;
+            if (appliedPromo.type === 'percent') {
+                const disc = Math.floor(subtotal * appliedPromo.val / 100);
+                return Math.min(disc, appliedPromo.max);
+            }
+            return 0;
+        }
+
+        function renderCart() {
+            const list = document.getElementById('cart-items');
+            const badge = document.getElementById('cart-badge');
+            const subtotalEl = document.getElementById('cart-subtotal');
+            const totalCount = cart.reduce((s, i) => s + i.qty, 0);
+
+            badge.textContent = totalCount;
+            const sub = getSubtotal();
+            subtotalEl.textContent = rupiah(sub);
+
+            if (!cart.length) {
+                list.innerHTML = '<div class="empty-cart">Keranjangmu masih kosong.<br>Pilih menu favoritmu!</div>';
+                return;
+            }
+
+            list.innerHTML = cart.map(i => `
+                <div class="cart-item">
+                    <div class="mini-thumb">${i.thumb}</div>
+                    <div>
+                        <div class="cart-name">${i.name}</div>
+                        <div class="cart-price">${rupiah(i.price)}</div>
+                    </div>
+                    <div class="qty-row">
+                        <button class="qty-btn" onclick="updateQty('${i.id}', -1)">-</button>
+                        <span style="font-weight:800; min-width:18px; text-align:center">${i.qty}</span>
+                        <button class="qty-btn" onclick="updateQty('${i.id}', 1)">+</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderCheckout() {
+            const sub = getSubtotal();
+            const disc = getDiscount(sub);
+            const total = Math.max(0, sub - disc);
+
+            document.getElementById('ch-subtotal').textContent = rupiah(sub);
+            const discRow = document.getElementById('ch-disc-row');
+            if (disc > 0) {
+                discRow.style.display = 'flex';
+                document.getElementById('ch-disc').textContent = '-' + rupiah(disc);
+            } else {
+                discRow.style.display = 'none';
+            }
+            document.getElementById('ch-total').textContent = rupiah(total);
+        }
+
+        function checkPromoCode(code) {
+            const safe = (code || '').trim().toUpperCase();
+            const promoMsg = document.getElementById('promo-msg');
+            const sub = getSubtotal();
+
+            if (!safe) {
+                appliedPromo = null;
+                promoMsg.innerHTML = '';
+                renderCheckout();
+                return;
+            }
+
+            const promos = {
+                'WELCOME10': { type: 'percent', val: 10, minOrder: 50000, max: 50000, desc: 'Diskon 10%' },
+                'SEHAT5K': { type: 'fixed', val: 5000, minOrder: 30000, max: 5000, desc: 'Potongan 5k' },
+                'PAYDAY20': { type: 'percent', val: 20, minOrder: 100000, max: 100000, desc: 'Diskon 20%' }
+            };
+
+            const p = promos[safe];
+            if (!p) {
+                appliedPromo = null;
+                promoMsg.innerHTML = '<span class="err-text">Kode promo tidak valid.</span>';
+            } else if (sub < p.minOrder) {
+                appliedPromo = null;
+                promoMsg.innerHTML = `<span class="err-text">Minimal order ${rupiah(p.minOrder)}.</span>`;
+            } else {
+                appliedPromo = p;
+                promoMsg.innerHTML = `<span class="ok-text">✓ Promo aktif: ${p.desc}</span>`;
+            }
+
+            renderCheckout();
+        }
+
+        function applyPromoText(code) {
+            document.getElementById('ch-promo').value = code;
+            checkPromoCode(code);
+            openModal('modal-checkout');
+        }
+
+        document.getElementById('btn-promo-check')?.addEventListener('click', () => {
+            checkPromoCode(document.getElementById('ch-promo').value);
+        });
+
+        // Checkout Submit
+        document.getElementById('checkout-form')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (!cart.length) {
+                alert('Keranjang masih kosong!');
+                return;
+            }
+
+            const name = document.getElementById('ch-name').value;
+            const phone = document.getElementById('ch-phone').value;
+            const type = document.getElementById('ch-type').value;
+            const sub = getSubtotal();
+            const disc = getDiscount(sub);
+            const total = Math.max(0, sub - disc);
+            const orderId = 'OME-' + Math.floor(1000 + Math.random() * 9000);
+
+            // Store last order for tracking demo
+            localStorage.setItem('LAST_OME_ORDER', JSON.stringify({
+                id: orderId,
+                name: name,
+                type: type,
+                total: total,
+                status: 'Pesanan Masuk'
+            }));
+
+            cart = [];
+            appliedPromo = null;
+            renderCart();
+            closeAllModals();
+
+            // WhatsApp link trigger
+            const waText = `Halo OME'S! Saya ${name} pesan:\nOrder ID: ${orderId}\nTipe: ${type}\nTotal: ${rupiah(total)}`;
+            const waUrl = `https://wa.me/6281234567890?text=${encodeURIComponent(waText)}`;
+            
+            alert(`🎉 Pesanan Berhasil dibuat!\n\nOrder ID: ${orderId}\nNama: ${name}\nTotal: ${rupiah(total)}\n\nKlik OK untuk konfirmasi ke WhatsApp.`);
+            window.open(waUrl, '_blank');
+        });
+
+        // Track Order
+        function trackOrderSubmit() {
+            const input = (document.getElementById('track-id').value || '').trim().toUpperCase();
+            const res = document.getElementById('track-result');
+            const last = JSON.parse(localStorage.getItem('LAST_OME_ORDER') || 'null');
+
+            if (!input) {
+                res.innerHTML = '<span class="err-text">Masukkan Order ID!</span>';
+                return;
+            }
+
+            const steps = ['Pesanan Masuk', 'Sedang Dibuat', 'Siap Diambil', 'Selesai'];
+            const orderStatus = (last && last.id === input) ? last.status : 'Sedang Dibuat';
+
+            res.innerHTML = `
+                <div class="track-card">
+                    <div style="font-weight:900; font-size:1.4rem; color:#ED7B35; margin-bottom:0.4rem">${input}</div>
+                    <div style="font-size:0.9rem; margin-bottom:1rem">Status Saat Ini: <b>${orderStatus}</b></div>
+                    <div class="track-steps">
+                        ${steps.map((s, idx) => `
+                            <div class="step-row done">
+                                <div class="step-dot">${idx + 1}</div>
+                                <span style="font-size:0.9rem; font-weight:700">${s}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Global Action Event Listeners
+        document.addEventListener('click', (e) => {
+            const actionEl = e.target.closest('[data-action]');
+            if (!actionEl) return;
+
+            const action = actionEl.dataset.action;
+            if (action === 'home') {
+                e.preventDefault();
+                closeAllModals();
+                document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+                actionEl.classList.add('active');
+            } else if (action === 'menu') {
+                e.preventDefault();
+                openModal('modal-cart');
+            } else if (action === 'promo') {
+                e.preventDefault();
+                openModal('modal-promo');
+            } else if (action === 'track') {
+                e.preventDefault();
+                openModal('modal-track');
+            } else if (action === 'add-cart') {
+                e.preventDefault();
+                addToCart(currentActiveFlavorKey);
+            } else if (action === 'checkout') {
+                e.preventDefault();
+                if (!cart.length) {
+                    alert('Keranjang masih kosong!');
+                    return;
+                }
+                renderCheckout();
+                openModal('modal-checkout');
+            }
+        });
 
     </script>
 </body>
